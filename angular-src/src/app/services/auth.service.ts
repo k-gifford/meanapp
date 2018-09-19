@@ -14,7 +14,7 @@ export class AuthService {
   user: any;
 
   constructor(private http:Http) { }
-  
+
   registerUser(user){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -46,6 +46,10 @@ export class AuthService {
   loadToken(){
     const token = localStorage.getItem('id_token');
     this.authToken = token;
+  }
+
+  loggedIn(){
+    return tokenNotExpired('id_token');
   }
 
   logout(){
